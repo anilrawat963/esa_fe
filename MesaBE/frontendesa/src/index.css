@@ -1,0 +1,128 @@
+/*  ESA -----------------------------
+   Global Modern UI Theme (Merged)
+--------------------------------*/
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+* { margin:0; padding:0; box-sizing:border-box; }
+
+:root{
+  --primary: #667eea;
+  --primary-dark:#5568d3;
+  --bg:#f8fafc;
+  --card:#ffffffcc;
+  --text:#0f172a;
+  --muted:#64748b;
+  --shadow: 0 6px 22px rgba(15,23,42,0.08);
+  --radius:12px;
+  transition: 0.2s ease;
+}
+
+/* scrollbar */
+*{ scrollbar-width:thin; scrollbar-color:var(--primary) #e6eefb; }
+*::-webkit-scrollbar{ width:8px;height:8px }
+*::-webkit-scrollbar-thumb{ background:var(--primary); border-radius:4px }
+
+/* body */
+html,body,#root{ height:100%; }
+body{
+  font-family: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(135deg,#f8fafc 0%, #e6eefb 50%, #f1f5f9 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* App container */
+.app{
+  height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* Header */
+.header {
+  height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  padding:0 20px;
+  background:rgba(255,255,255,0.6);
+  box-shadow:var(--shadow);
+  backdrop-filter: blur(6px);
+  border-bottom:1px solid rgba(0,0,0,0.04);
+}
+
+/* Dashboard layout */
+.dashboard-container{
+  display:grid;
+  grid-template-columns:320px 1fr 380px;
+  gap:16px;
+  padding:20px;
+  height: calc(100vh - 64px);
+}
+.dashboard-container.map-hidden{
+  grid-template-columns:320px 1fr;
+}
+
+/* Sidebar */
+.events-sidebar{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+  overflow:auto;
+}
+.sidebar-header{ display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;}
+.sidebar-title{ font-weight:600; font-size:18px; }
+.event-card{ background: #fff; border-radius:10px; padding:12px; margin-bottom:12px; box-shadow: 0 2px 10px rgba(0,0,0,0.03); cursor:pointer; }
+.event-card-header{ display:flex; justify-content:space-between; align-items:center; }
+.event-name{ font-weight:600 }
+.severity-badge{ padding:4px 8px; border-radius:8px; font-size:12px; }
+.severity-badge.critical{ background:#fee2e2; color:#991b1b; }
+.severity-badge.high{ background:#fff7ed; color:#92400e; }
+.severity-badge.medium{ background:#fffbeb; color:#92400e; }
+.severity-badge.low{ background:#ecfdf5; color:#065f46; }
+
+.event-description{ color:var(--muted); font-size:13px; margin-top:8px; }
+
+/* Map area */
+.live-map{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  overflow:hidden;
+  display:flex;
+  flex-direction:column;
+}
+.map-iframe{ border:0; width:100%; height:100%; min-height:300px; }
+
+/* Event details (right) */
+.event-details{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:16px;
+  box-shadow:var(--shadow);
+  overflow:auto;
+}
+.event-title{ font-size:20px; font-weight:700; }
+.event-full-description{ color:var(--muted); margin-top:8px; }
+
+/* Buttons */
+.btn{
+  padding:8px 12px; border-radius:10px; border:0; cursor:pointer; font-weight:600;
+}
+.btn-primary{ background:var(--primary); color:white; box-shadow: 0 6px 20px rgba(102,126,234,0.18); }
+.btn-ghost{ background:transparent; color:var(--primary); border:1px solid rgba(102,126,234,0.12) }
+
+/* Forms (login/register) */
+.form-card{ width:420px; margin:60px auto; background:var(--card); padding:28px; border-radius:12px; box-shadow:var(--shadow); }
+.input{ width:100%; padding:10px 12px; border-radius:8px; border:1px solid rgba(15,23,42,0.06); margin-top:8px; }
+.label{ font-weight:600; margin-top:12px; display:block; color:var(--muted); }
+.small-muted{ font-size:13px; color:var(--muted); margin-top:8px; }
+
+/* Responsive */
+@media (max-width: 1000px){
+  .dashboard-container{ grid-template-columns: 1fr; grid-auto-rows: auto; height: auto; padding:12px; }
+  .map-iframe{ min-height:300px }
+}
